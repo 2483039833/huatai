@@ -1,0 +1,28 @@
+{
+  "scope": "company",
+  "training_records": 1203,
+  "validation_records": 322,
+  "method": "character TF-IDF (2-5 gram) + class-balanced LinearSVC + taxonomy-constrained candidate decoding",
+  "selection_rule": "highest validation Macro-F1, then validation accuracy",
+  "selected_model": "headline_lead_char_svm",
+  "validation": {
+    "title_char_svm": {
+      "accuracy": 0.7795,
+      "macro_f1": 0.7005
+    },
+    "headline_lead_char_svm": {
+      "accuracy": 0.7919,
+      "macro_f1": 0.7494
+    }
+  },
+  "provided_test_diagnostic": {
+    "title_char_svm": {
+      "accuracy": 0.784,
+      "macro_f1": 0.7341
+    },
+    "headline_lead_char_svm": {
+      "accuracy": 0.8194,
+      "macro_f1": 0.7658
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "generated_at": "2026-07-27T06:06:18.323659Z",
+  "scope": "evidence confidence, not ground-truth fact verification",
+  "method": "weighted source authority + cross-source corroboration + official cues + specificity + cluster agreement - rumour penalty",
+  "assessed_event_clusters": 429,
+  "credibility_level_distribution": {
+    "high": 7,
+    "medium": 60,
+    "low": 195,
+    "very_low": 167
+  },
+  "source_tier_distribution": {
+    "authoritative_financial": 110,
+    "mainstream_media": 243,
+    "unclassified": 394,
+    "official": 6
+  },
+  "events_with_multiple_sources": 164,
+  "events_with_official_cues": 146,
+  "output_file": "credibility_assessment_test.jsonl.gz",
+  "limitation": "The competition data contains no factual truth labels. Scores express evidentiary confidence and must be treated as a review priority, not an automated fact verdict."
+}

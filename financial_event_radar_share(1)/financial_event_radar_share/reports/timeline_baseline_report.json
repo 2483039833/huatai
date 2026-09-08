@@ -1,0 +1,24 @@
+{
+  "generated_at": "2026-07-27T06:06:48.994590Z",
+  "method": "chronological event state machine using official-confirmation, clarification, impact and rumour cues",
+  "timelines": 429,
+  "average_articles_per_timeline": 1.76,
+  "current_status_distribution": {
+    "confirmed": 138,
+    "corroborated": 97,
+    "watching": 48,
+    "clarified": 9,
+    "reported": 137
+  },
+  "milestone_distribution": {
+    "official_confirmation": 262,
+    "impact_update": 84,
+    "multi_source_follow_up": 380,
+    "follow_up": 13,
+    "clarification": 14
+  },
+  "timelines_with_official_confirmation": 140,
+  "timelines_with_clarification": 9,
+  "output_file": "event_timelines_test.jsonl.gz",
+  "limitation": "The dataset does not label event lifecycle states; state transitions are explainable rule-based signals for monitoring and should be reviewed in production."
+}

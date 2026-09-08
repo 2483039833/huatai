@@ -1,0 +1,51 @@
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+event_extract(1)/event_extract/config.json
+
+# Python environments and caches
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Frontend dependencies and generated build
+frontend/node_modules/
+frontend/dist/
+frontend/*.timestamp-*.mjs
+
+# Large datasets and generated caches
+cleaned_data/
+*.xlsx
+*.xls
+data/embeddings/
+data/cache/
+data/models/
+data/processed/
+data/results/
+
+# Generated annotation corpora
+event_extract(1)/event_extract/outputs_event/
+financial_event_radar_share(1)/financial_event_radar_share/models/
+financial_event_radar_share(1)/financial_event_radar_share/web/data/
+notebooks/
+
+# Local logs and editor state
+*.log
+.agents/
+.claude/
+.vscode/
+.idea/
+
+# Competition documents containing personal or distribution-limited material
+*.pdf
+*.docx
+*.pptx
+
+# OS files
+.DS_Store
+Thumbs.db

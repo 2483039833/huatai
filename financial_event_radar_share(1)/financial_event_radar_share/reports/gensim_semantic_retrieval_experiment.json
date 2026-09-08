@@ -1,0 +1,128 @@
+{
+  "method": "character Word2Vec trained on labelled training and unlabelled training headlines, issuer-local semantic retrieval, and character/semantic score fusion",
+  "embedding": {
+    "vector_size": 96,
+    "vocabulary": 4523,
+    "corpus_count": 201522
+  },
+  "selection_rule": "highest validation Macro-F1, then accuracy",
+  "selected_model": "hybrid_char_0.1",
+  "validation": {
+    "character_nn": {
+      "accuracy": 0.8106,
+      "macro_f1": 0.76
+    },
+    "semantic_nn": {
+      "accuracy": 0.8354,
+      "macro_f1": 0.7887
+    },
+    "hybrid_char_0.1": {
+      "accuracy": 0.8385,
+      "macro_f1": 0.7975
+    },
+    "hybrid_char_0.2": {
+      "accuracy": 0.8447,
+      "macro_f1": 0.7913
+    },
+    "hybrid_char_0.3": {
+      "accuracy": 0.8416,
+      "macro_f1": 0.794
+    },
+    "hybrid_char_0.4": {
+      "accuracy": 0.8199,
+      "macro_f1": 0.7669
+    },
+    "hybrid_char_0.5": {
+      "accuracy": 0.8168,
+      "macro_f1": 0.7673
+    },
+    "hybrid_char_0.6": {
+      "accuracy": 0.8168,
+      "macro_f1": 0.7667
+    },
+    "hybrid_char_0.7": {
+      "accuracy": 0.8168,
+      "macro_f1": 0.7662
+    },
+    "hybrid_char_0.8": {
+      "accuracy": 0.8199,
+      "macro_f1": 0.7677
+    },
+    "hybrid_char_0.9": {
+      "accuracy": 0.823,
+      "macro_f1": 0.7747
+    }
+  },
+  "provided_test_diagnostic": {
+    "character_nn": {
+      "accuracy": 0.7932,
+      "macro_f1": 0.7726
+    },
+    "semantic_nn": {
+      "accuracy": 0.8194,
+      "macro_f1": 0.791
+    },
+    "hybrid_char_0.1": {
+      "accuracy": 0.8233,
+      "macro_f1": 0.8009
+    },
+    "hybrid_char_0.2": {
+      "accuracy": 0.8076,
+      "macro_f1": 0.7739
+    },
+    "hybrid_char_0.3": {
+      "accuracy": 0.7997,
+      "macro_f1": 0.7704
+    },
+    "hybrid_char_0.4": {
+      "accuracy": 0.7971,
+      "macro_f1": 0.768
+    },
+    "hybrid_char_0.5": {
+      "accuracy": 0.7958,
+      "macro_f1": 0.7669
+    },
+    "hybrid_char_0.6": {
+      "accuracy": 0.7945,
+      "macro_f1": 0.7668
+    },
+    "hybrid_char_0.7": {
+      "accuracy": 0.7958,
+      "macro_f1": 0.7601
+    },
+    "hybrid_char_0.8": {
+      "accuracy": 0.7958,
+      "macro_f1": 0.7609
+    },
+    "hybrid_char_0.9": {
+      "accuracy": 0.7958,
+      "macro_f1": 0.769
+    }
+  },
+  "validation_hybrid_margin_diagnostics": {
+    ">=0.005": {
+      "coverage": 0.9503,
+      "accuracy": 0.8595
+    },
+    ">=0.010": {
+      "coverage": 0.8727,
+      "accuracy": 0.8932
+    },
+    ">=0.020": {
+      "coverage": 0.8075,
+      "accuracy": 0.9115
+    },
+    ">=0.030": {
+      "coverage": 0.764,
+      "accuracy": 0.9268
+    },
+    ">=0.050": {
+      "coverage": 0.7112,
+      "accuracy": 0.9432
+    },
+    ">=0.080": {
+      "coverage": 0.6677,
+      "accuracy": 0.9535
+    }
+  }
+}

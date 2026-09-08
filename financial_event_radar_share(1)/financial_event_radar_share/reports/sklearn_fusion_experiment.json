@@ -1,0 +1,49 @@
+{
+  "training_records": 1203,
+  "validation_records": 322,
+  "selection_rule": "highest validation Macro-F1, then accuracy",
+  "selected_strategy": "nearest_neighbor",
+  "selected_svm_margin": null,
+  "validation": {
+    "svm": {
+      "accuracy": 0.7919,
+      "macro_f1": 0.7494
+    },
+    "nearest_neighbor": {
+      "accuracy": 0.8106,
+      "macro_f1": 0.76
+    },
+    "svm_if_margin_ge_0.000": {
+      "accuracy": 0.7919,
+      "macro_f1": 0.7494
+    },
+    "svm_if_margin_ge_0.071": {
+      "accuracy": 0.8043,
+      "macro_f1": 0.7487
+    },
+    "svm_if_margin_ge_0.145": {
+      "accuracy": 0.7919,
+      "macro_f1": 0.7177
+    },
+    "svm_if_margin_ge_0.266": {
+      "accuracy": 0.8075,
+      "macro_f1": 0.7514
+    },
+    "svm_if_margin_ge_0.636": {
+      "accuracy": 0.8012,
+      "macro_f1": 0.7506
+    },
+    "svm_if_margin_ge_1.000": {
+      "accuracy": 0.8043,
+      "macro_f1": 0.7537
+    },
+    "svm_if_margin_ge_1.791": {
+      "accuracy": 0.8106,
+      "macro_f1": 0.76
+    }
+  },
+  "provided_test_diagnostic": {
+    "accuracy": 0.7932,
+    "macro_f1": 0.7726
+  }
+}

@@ -1,0 +1,106 @@
+{
+  "training_records": 1203,
+  "validation_records": 322,
+  "selection_rule": "highest validation Macro-F1, then validation accuracy",
+  "selected_model": "nn_title_fallback_001",
+  "validation": {
+    "title_nb": {
+      "accuracy": 0.7764,
+      "macro_f1": 0.7143
+    },
+    "body_nb": {
+      "accuracy": 0.7826,
+      "macro_f1": 0.6829
+    },
+    "title_nn": {
+      "accuracy": 0.8106,
+      "macro_f1": 0.76
+    },
+    "taxonomy_definition": {
+      "accuracy": 0.7174,
+      "macro_f1": 0.6949
+    },
+    "nn_definition_fallback": {
+      "accuracy": 0.7795,
+      "macro_f1": 0.7279
+    },
+    "nn_title_fallback_001": {
+      "accuracy": 0.8106,
+      "macro_f1": 0.7677
+    },
+    "nn_title_fallback_005": {
+      "accuracy": 0.7919,
+      "macro_f1": 0.7499
+    },
+    "nn_title_fallback_010": {
+      "accuracy": 0.7795,
+      "macro_f1": 0.7249
+    },
+    "nn_title_fallback_015": {
+      "accuracy": 0.7702,
+      "macro_f1": 0.7166
+    },
+    "nn_rule_low_conf": {
+      "accuracy": 0.8106,
+      "macro_f1": 0.76
+    },
+    "nn_rule_always": {
+      "accuracy": 0.8106,
+      "macro_f1": 0.76
+    },
+    "voting_ensemble": {
+      "accuracy": 0.7826,
+      "macro_f1": 0.7371
+    }
+  },
+  "provided_test_diagnostic": {
+    "title_nb": {
+      "accuracy": 0.8115,
+      "macro_f1": 0.7352
+    },
+    "body_nb": {
+      "accuracy": 0.7866,
+      "macro_f1": 0.6798
+    },
+    "title_nn": {
+      "accuracy": 0.7932,
+      "macro_f1": 0.7726
+    },
+    "taxonomy_definition": {
+      "accuracy": 0.7343,
+      "macro_f1": 0.6775
+    },
+    "nn_definition_fallback": {
+      "accuracy": 0.7683,
+      "macro_f1": 0.738
+    },
+    "nn_title_fallback_001": {
+      "accuracy": 0.7906,
+      "macro_f1": 0.7607
+    },
+    "nn_title_fallback_005": {
+      "accuracy": 0.7814,
+      "macro_f1": 0.7536
+    },
+    "nn_title_fallback_010": {
+      "accuracy": 0.7827,
+      "macro_f1": 0.7422
+    },
+    "nn_title_fallback_015": {
+      "accuracy": 0.7827,
+      "macro_f1": 0.7421
+    },
+    "nn_rule_low_conf": {
+      "accuracy": 0.7919,
+      "macro_f1": 0.7714
+    },
+    "nn_rule_always": {
+      "accuracy": 0.7919,
+      "macro_f1": 0.7714
+    },
+    "voting_ensemble": {
+      "accuracy": 0.7997,
+      "macro_f1": 0.7467
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "method": "class-balanced logistic regression on title/body containment, publication gap, same source, exact title and content length ratio",
+  "training": {
+    "candidate_pairs": 259087,
+    "positive_pairs": 952,
+    "fit_examples": 3998,
+    "calibration_examples": 1714
+  },
+  "selected_threshold": 0.3,
+  "calibration_metrics": {
+    "precision": 0.9371,
+    "recall": 1.0,
+    "f1": 0.9675,
+    "true_positive": 283
+  },
+  "test_diagnostic": {
+    "precision": 0.495,
+    "recall": 1.0,
+    "f1": 0.6623,
+    "true_positive": 950
+  }
+}

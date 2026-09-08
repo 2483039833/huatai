@@ -1,0 +1,356 @@
+{
+  "generated_at": "2026-07-27T07:13:25.418927Z",
+  "evaluation_protocol": {
+    "model_selection": "stratified validation subset of the labelled training data; Macro-F1 first, accuracy second",
+    "diagnostic_holdout": "labelled holdout data is only used for final diagnosis, not for model/threshold selection",
+    "unscored_modules": "credibility, timeline and alert priority have no ground-truth labels in the supplied data; report operational coverage rather than fabricated accuracy"
+  },
+  "classification": {
+    "company": {
+      "records": 764,
+      "accuracy": 0.8233,
+      "macro_f1": 0.8009,
+      "weighted_f1": 0.8213,
+      "labels": 43,
+      "review_required": {
+        "count": 102,
+        "rate": 0.1335
+      },
+      "selective_quality": {
+        ">=0.80": {
+          "coverage": 0.9228,
+          "accuracy": 0.8426
+        },
+        ">=0.88": {
+          "coverage": 0.8665,
+          "accuracy": 0.8671
+        },
+        ">=0.90": {
+          "coverage": 0.784,
+          "accuracy": 0.8948
+        },
+        ">=0.92": {
+          "coverage": 0.7238,
+          "accuracy": 0.9331
+        },
+        ">=0.94": {
+          "coverage": 0.6885,
+          "accuracy": 0.9449
+        },
+        ">=0.95": {
+          "coverage": 0.661,
+          "accuracy": 0.9485
+        }
+      },
+      "worst_supported_classes": [
+        {
+          "label": "海外产能进展",
+          "support": 5,
+          "precision": 0.3333,
+          "recall": 0.2,
+          "f1": 0.25
+        },
+        {
+          "label": "新车出海",
+          "support": 3,
+          "precision": 0.3333,
+          "recall": 0.3333,
+          "f1": 0.3333
+        },
+        {
+          "label": "国际化布局",
+          "support": 4,
+          "precision": 0.5,
+          "recall": 0.25,
+          "f1": 0.3333
+        },
+        {
+          "label": "全球化市场扩张与品牌布局",
+          "support": 5,
+          "precision": 1.0,
+          "recall": 0.2,
+          "f1": 0.3333
+        },
+        {
+          "label": "动力电池产品迭代",
+          "support": 5,
+          "precision": 0.3333,
+          "recall": 0.6,
+          "f1": 0.4286
+        },
+        {
+          "label": "合资品牌战略",
+          "support": 16,
+          "precision": 0.4375,
+          "recall": 0.4375,
+          "f1": 0.4375
+        },
+        {
+          "label": "市场竞争",
+          "support": 7,
+          "precision": 0.5,
+          "recall": 0.5714,
+          "f1": 0.5333
+        },
+        {
+          "label": "公司战略变化及对外投资",
+          "support": 6,
+          "precision": 0.4167,
+          "recall": 0.8333,
+          "f1": 0.5556
+        },
+        {
+          "label": "市场竞争加剧",
+          "support": 10,
+          "precision": 0.5455,
+          "recall": 0.6,
+          "f1": 0.5714
+        },
+        {
+          "label": "关键技术突破",
+          "support": 63,
+          "precision": 0.6731,
+          "recall": 0.5556,
+          "f1": 0.6087
+        }
+      ],
+      "top_error_pairs": [
+        {
+          "actual": "公司战略调整",
+          "predicted": "产品技术创新",
+          "count": 26
+        },
+        {
+          "actual": "关键技术突破",
+          "predicted": "产能布局调整",
+          "count": 14
+        },
+        {
+          "actual": "产能布局调整",
+          "predicted": "关键技术突破",
+          "count": 14
+        },
+        {
+          "actual": "合资品牌战略",
+          "predicted": "产品技术创新",
+          "count": 9
+        },
+        {
+          "actual": "产品技术创新",
+          "predicted": "合资品牌战略",
+          "count": 9
+        },
+        {
+          "actual": "新车发布定价",
+          "predicted": "技术研发进展",
+          "count": 7
+        },
+        {
+          "actual": "关键技术突破",
+          "predicted": "公司战略变化及对外投资",
+          "count": 7
+        },
+        {
+          "actual": "关键技术突破",
+          "predicted": "新业务拓展",
+          "count": 7
+        },
+        {
+          "actual": "产品技术创新",
+          "predicted": "市场竞争加剧",
+          "count": 5
+        },
+        {
+          "actual": "全球化市场扩张与品牌布局",
+          "predicted": "To B业务拓展（新能源、机器人等）",
+          "count": 4
+        }
+      ]
+    },
+    "industry": {
+      "records": 282,
+      "accuracy": 0.9752,
+      "macro_f1": 0.9682,
+      "weighted_f1": 0.9744,
+      "labels": 20,
+      "review_required": {
+        "count": 0,
+        "rate": 0.0
+      },
+      "selective_quality": {
+        ">=0.80": {
+          "coverage": 0.3723,
+          "accuracy": 0.9333
+        },
+        ">=0.88": {
+          "coverage": 0.3723,
+          "accuracy": 0.9333
+        },
+        ">=0.90": {
+          "coverage": 0.3723,
+          "accuracy": 0.9333
+        },
+        ">=0.92": {
+          "coverage": 0.3723,
+          "accuracy": 0.9333
+        },
+        ">=0.94": {
+          "coverage": 0.3723,
+          "accuracy": 0.9333
+        },
+        ">=0.95": {
+          "coverage": 0.3723,
+          "accuracy": 0.9333
+        }
+      },
+      "worst_supported_classes": [
+        {
+          "label": "化债政策",
+          "support": 8,
+          "precision": 1.0,
+          "recall": 0.625,
+          "f1": 0.7692
+        },
+        {
+          "label": "稳增长政策",
+          "support": 16,
+          "precision": 0.8421,
+          "recall": 1.0,
+          "f1": 0.9143
+        },
+        {
+          "label": "风电产业政策支持",
+          "support": 12,
+          "precision": 0.9167,
+          "recall": 0.9167,
+          "f1": 0.9167
+        },
+        {
+          "label": "行业政策推动",
+          "support": 13,
+          "precision": 1.0,
+          "recall": 0.8462,
+          "f1": 0.9167
+        },
+        {
+          "label": "OPEC+产量政策变化",
+          "support": 12,
+          "precision": 0.8571,
+          "recall": 1.0,
+          "f1": 0.9231
+        },
+        {
+          "label": "行业调控政策发布",
+          "support": 11,
+          "precision": 0.9167,
+          "recall": 1.0,
+          "f1": 0.9565
+        },
+        {
+          "label": "航海装备产业升级",
+          "support": 16,
+          "precision": 1.0,
+          "recall": 0.9375,
+          "f1": 0.9677
+        },
+        {
+          "label": "水产品价格变动",
+          "support": 4,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        {
+          "label": "存款利率下调",
+          "support": 8,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        {
+          "label": "影视市场表现变化",
+          "support": 10,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        }
+      ],
+      "top_error_pairs": [
+        {
+          "actual": "化债政策",
+          "predicted": "稳增长政策",
+          "count": 3
+        },
+        {
+          "actual": "行业政策推动",
+          "predicted": "OPEC+产量政策变化",
+          "count": 2
+        },
+        {
+          "actual": "风电产业政策支持",
+          "predicted": "行业调控政策发布",
+          "count": 1
+        },
+        {
+          "actual": "航海装备产业升级",
+          "predicted": "风电产业政策支持",
+          "count": 1
+        }
+      ]
+    }
+  },
+  "optimization_comparison": {
+    "baseline_character_nn": {
+      "accuracy": 0.7932,
+      "macro_f1": 0.7726
+    },
+    "selected_semantic_hybrid": {
+      "accuracy": 0.8233,
+      "macro_f1": 0.8009
+    },
+    "accuracy_gain": 0.0301,
+    "macro_f1_gain": 0.0283
+  },
+  "deduplication": {
+    "records": 753,
+    "positive_pairs": 950,
+    "candidate_pairs": 84194,
+    "candidate_recall": 1.0,
+    "pair_metrics": {
+      "precision": 0.9737,
+      "recall": 0.8579,
+      "f1": 0.9121,
+      "true_positive": 815
+    },
+    "b_cubed": {
+      "precision": 0.9735,
+      "recall": 0.9853,
+      "f1": 0.9794
+    },
+    "predicted_clusters": 429,
+    "multi_article_clusters": 164,
+    "edge_file": "deduplication_edges_test.jsonl.gz",
+    "cluster_file": "deduplication_clusters_test.jsonl.gz"
+  },
+  "operational_coverage": {
+    "event_clusters": 429,
+    "multi_source_events": 164,
+    "official_cue_events": 146,
+    "timelines": 429,
+    "alerts": 429,
+    "manual_reviews": 1,
+    "immediate_pushes": 4
+  },
+  "source_reports": {
+    "event": "2026-07-27T06:05:26.438674Z",
+    "deduplication": "2026-07-27T04:51:35.466952Z",
+    "credibility": "2026-07-27T06:06:18.323659Z",
+    "timeline": "2026-07-27T06:06:48.994590Z",
+    "alerting": "2026-07-27T06:07:18.437809Z"
+  },
+  "next_optimization_priority": [
+    "对个股事件中低 F1 的相近类别补充对比学习样本或人工标注示例，重点降低高频混淆对。",
+    "使用事件簇级人工审核样本校准可信度评分和告警优先级；当前数据没有相应真值，不能报告其准确率。",
+    "为去重的边界相似新闻引入语义重排序，在保持当前高精度的前提下改善 85.79% 的成对召回率。"
+  ]
+}

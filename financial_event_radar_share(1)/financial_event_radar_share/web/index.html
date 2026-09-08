@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>金融事件雷达</title>
+  <style>
+    :root { --ink:#162033; --muted:#65738a; --line:#e7ebf1; --bg:#f5f7fb; --card:#fff; --blue:#2563eb; --red:#dc2626; --orange:#ea580c; --green:#059669; }
+    * { box-sizing:border-box; } body { margin:0; color:var(--ink); font:14px/1.5 "Microsoft YaHei", system-ui, sans-serif; background:var(--bg); }
+    header { padding:26px max(24px, calc((100% - 1440px)/2)); color:#fff; background:linear-gradient(120deg,#0f2a58,#2563eb); }
+    header h1 { margin:0; font-size:26px; } header p { margin:4px 0 0; opacity:.8; }
+    main { max-width:1440px; margin:0 auto; padding:22px 24px 36px; }
+    .metrics { display:grid; grid-template-columns:repeat(5,1fr); gap:14px; margin-bottom:18px; }
+    .metric,.panel { background:var(--card); border:1px solid var(--line); border-radius:12px; box-shadow:0 1px 2px #17255408; }
+    .metric { padding:15px 17px; } .metric .label { color:var(--muted); font-size:12px; } .metric .value { margin-top:3px; font-size:25px; font-weight:700; }
+    .layout { display:grid; grid-template-columns:minmax(440px, .9fr) minmax(500px, 1.1fr); gap:18px; }
+    .panel { overflow:hidden; } .toolbar { display:flex; gap:8px; flex-wrap:wrap; padding:14px; border-bottom:1px solid var(--line); }
+    input,select { border:1px solid #ccd4df; border-radius:7px; padding:8px 9px; color:var(--ink); background:#fff; } input { min-width:170px; flex:1; }
+    .list { max-height:710px; overflow:auto; } .alert-row { padding:14px 16px; border-bottom:1px solid var(--line); cursor:pointer; } .alert-row:hover,.alert-row.active { background:#eff6ff; }
+    .row-top,.tags,.detail-top { display:flex; align-items:center; gap:8px; } .row-top { justify-content:space-between; } .alert-title { margin:7px 0 6px; font-weight:650; line-height:1.4; } .small { color:var(--muted); font-size:12px; }
+    .tag { display:inline-block; padding:2px 7px; border-radius:999px; background:#eef2f7; color:#40516a; font-size:12px; white-space:nowrap; } .p3 { background:#fee2e2; color:#b91c1c; }.p2 { background:#ffedd5; color:#c2410c; }.p1 { background:#dbeafe; color:#1d4ed8; }.p0 { background:#ecfdf5; color:#047857; }
+    .detail { min-height:650px; padding:20px; } .empty { color:var(--muted); display:grid; min-height:500px; place-items:center; }
+    .detail h2 { margin:0 0 8px; font-size:21px; line-height:1.4; }.score { margin-left:auto; text-align:center; width:74px; height:74px; padding-top:12px; border-radius:50%; background:#eff6ff; color:#1d4ed8; font-size:24px; font-weight:700; }.score span { display:block; font-size:11px; font-weight:400; color:var(--muted); }
+    .section { margin-top:19px; }.section h3 { margin:0 0 8px; font-size:14px; }.reasons { margin:0; padding-left:19px; }.reasons li { margin:4px 0; }
+    .components { display:grid; grid-template-columns:repeat(2,1fr); gap:8px; }.component { padding:9px; border:1px solid var(--line); border-radius:8px; }.component b { float:right; color:var(--blue); }
+    .timeline { border-left:2px solid #bfdbfe; margin-left:5px; padding-left:15px; }.milestone { position:relative; padding:0 0 14px; }.milestone:before { content:""; position:absolute; left:-21px; top:4px; width:9px; height:9px; border-radius:50%; background:var(--blue); }.milestone:last-child { padding-bottom:0; }
+    .notice { margin:12px 0 0; color:var(--muted); font-size:12px; } @media (max-width:900px) { .metrics{grid-template-columns:repeat(2,1fr)} .layout{grid-template-columns:1fr} .list{max-height:400px} } @media (max-width:500px) { main{padding:14px}.metrics{grid-template-columns:1fr}.components{grid-template-columns:1fr} }
+  </style>
+</head>
+<body>
+  <header><h1>金融事件雷达</h1><p>上市公司事件识别 · 可信评估 · 脉络追踪 · 分级预警</p></header>
+  <main>
+    <section id="metrics" class="metrics"></section>
+    <section class="layout">
+      <div class="panel"><div class="toolbar"><input id="search" placeholder="搜索事件标题或类型"><select id="priority"><option value="all">全部预警等级</option><option>P3</option><option>P2</option><option>P1</option><option>P0</option></select><select id="status"><option value="all">全部状态</option><option value="confirmed">已确认</option><option value="corroborated">多源印证</option><option value="reported">已报道</option><option value="watching">观察中</option><option value="clarified">已澄清</option></select></div><div id="list" class="list"></div></div>
+      <div class="panel"><div id="detail" class="detail empty">从左侧选择一个事件，查看证据、时间线和预警理由。</div></div>
+    </section>
+    <p class="notice">可信度分数表示证据充分程度，用于预警优先级与人工复核，不等同于事实真伪判定。</p>
+  </main>
+  <script>
+    const stateNames={confirmed:'已确认',corroborated:'多源印证',reported:'已报道',watching:'观察中',clarified:'已澄清'};
+    const actionNames={immediate_push:'即时推送',priority_push:'优先推送',watchlist:'观察列表',archive:'归档',withdraw_or_update:'撤回/更新',manual_review:'人工复核'};
+    const componentNames={evidence_confidence:'证据可信度',event_materiality:'事件重要性',information_breadth:'传播范围',state_confirmation:'状态确认',freshness:'时效性',event_classification_confidence:'事件分类置信度'};
+    let dashboard, filtered=[], selectedId;
+    const el=id=>document.getElementById(id);
+    const badge=(text, cls='')=>{const x=document.createElement('span');x.className=`tag ${cls}`;x.textContent=text;return x};
+    const metric=(label,value)=>{const x=document.createElement('div');x.className='metric';const a=document.createElement('div');a.className='label';a.textContent=label;const b=document.createElement('div');b.className='value';b.textContent=value;x.append(a,b);return x};
+    function renderMetrics(){const s=dashboard.summary, box=el('metrics');box.replaceChildren(metric('事件总数',s.total_events),metric('P3 即时推送',s.priority_distribution.P3||0),metric('P2 优先推送',s.priority_distribution.P2||0),metric('已确认',s.status_distribution.confirmed||0),metric('最新更新',s.latest_update?new Date(s.latest_update).toLocaleDateString('zh-CN'):'—'));}
+    function applyFilters(){const q=el('search').value.trim().toLowerCase(),p=el('priority').value,s=el('status').value;filtered=dashboard.alerts.filter(x=>(p==='all'||x.priority===p)&&(s==='all'||x.timeline_status===s)&&(!q||`${x.title} ${x.event_type}`.toLowerCase().includes(q)));if(!filtered.some(x=>x.alert_id===selectedId)) selectedId=filtered[0]?.alert_id;renderList();renderDetail();}
+    function renderList(){const box=el('list');box.replaceChildren();if(!filtered.length){box.textContent='没有符合条件的事件。';return}for(const item of filtered){const row=document.createElement('article');row.className=`alert-row ${item.alert_id===selectedId?'active':''}`;row.onclick=()=>{selectedId=item.alert_id;renderList();renderDetail()};const top=document.createElement('div');top.className='row-top';top.append(badge(item.priority,item.priority.toLowerCase()),badge(stateNames[item.timeline_status]||item.timeline_status));const score=document.createElement('b');score.textContent=`${item.impact_score} 分`;top.append(score);const title=document.createElement('div');title.className='alert-title';title.textContent=item.title;const meta=document.createElement('div');meta.className='small';meta.textContent=`${item.event_type} · 可信度 ${item.credibility.score} · ${actionNames[item.action]||item.action}`;row.append(top,title,meta);box.append(row)}}
+    function renderDetail(){const item=filtered.find(x=>x.alert_id===selectedId),box=el('detail');if(!item){box.className='detail empty';box.textContent='从左侧选择一个事件，查看证据、时间线和预警理由。';return}box.className='detail';box.replaceChildren();const top=document.createElement('div');top.className='detail-top';const left=document.createElement('div');const h=document.createElement('h2');h.textContent=item.title;const tags=document.createElement('div');tags.className='tags';tags.append(badge(item.priority,item.priority.toLowerCase()),badge(stateNames[item.timeline_status]||item.timeline_status),badge(item.event_type),badge(`可信度 ${item.credibility.level}`));left.append(h,tags);const score=document.createElement('div');score.className='score';score.textContent=item.impact_score;const cap=document.createElement('span');cap.textContent='影响分';score.append(cap);top.append(left,score);box.append(top);
+      const summary=document.createElement('div');summary.className='section';summary.append(Object.assign(document.createElement('h3'),{textContent:'事件摘要'}));const sp=document.createElement('p');sp.textContent=item.timeline_summary||'暂无摘要';summary.append(sp);box.append(summary);
+      const why=document.createElement('div');why.className='section';why.append(Object.assign(document.createElement('h3'),{textContent:'推送理由'}));const ul=document.createElement('ul');ul.className='reasons';item.push_reason.forEach(r=>{const li=document.createElement('li');li.textContent=r;ul.append(li)});why.append(ul);box.append(why);
+      const comp=document.createElement('div');comp.className='section';comp.append(Object.assign(document.createElement('h3'),{textContent:'影响评分构成'}));const grid=document.createElement('div');grid.className='components';Object.entries(item.score_components).forEach(([k,v])=>{const c=document.createElement('div');c.className='component';c.textContent=componentNames[k]||k;const b=document.createElement('b');b.textContent=v;c.append(b);grid.append(c)});comp.append(grid);box.append(comp);
+      const time=document.createElement('div');time.className='section';time.append(Object.assign(document.createElement('h3'),{textContent:`事件时间线（${item.article_count} 篇资讯 / ${item.source_count} 个来源）`}));const line=document.createElement('div');line.className='timeline';item.full_timeline.forEach(m=>{const node=document.createElement('div');node.className='milestone';const name=document.createElement('b');name.textContent=`${m.published_at?new Date(m.published_at).toLocaleString('zh-CN'):'时间未知'} · ${m.type}`;const desc=document.createElement('div');desc.className='small';desc.textContent=m.evidence||m.title;node.append(name,desc);line.append(node)});time.append(line);box.append(time);
+    }
+    fetch('./data/dashboard_data.json').then(r=>{if(!r.ok)throw Error();return r.json()}).then(data=>{dashboard=data;renderMetrics();applyFilters()}).catch(()=>{el('detail').className='detail';el('detail').textContent='未能读取数据。请在 event_radar 目录运行：python -m http.server 8080，然后访问 http://localhost:8080/web/'});
+    ['search','priority','status'].forEach(id=>el(id).addEventListener(id==='search'?'input':'change',applyFilters));
+  </script>
+</body>
+</html>

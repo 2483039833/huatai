@@ -1,0 +1,24 @@
+{
+  "generated_at": "2026-07-27T06:07:18.437809Z",
+  "method": "weighted evidence confidence + event materiality + information breadth + state confirmation + freshness",
+  "alerts": 429,
+  "priority_distribution": {
+    "P3": 4,
+    "P2": 49,
+    "P1": 228,
+    "P0": 148
+  },
+  "action_distribution": {
+    "immediate_push": 4,
+    "priority_push": 49,
+    "manual_review": 1,
+    "watchlist": 227,
+    "archive": 139,
+    "withdraw_or_update": 9
+  },
+  "clarification_updates": 9,
+  "manual_reviews": 1,
+  "immediate_pushes": 4,
+  "output_file": "alert_feed_test.jsonl.gz",
+  "limitation": "Impact score weights are initial business rules. The data has no labelled alert priority, so production thresholds require investment-research and risk-control review."
+}

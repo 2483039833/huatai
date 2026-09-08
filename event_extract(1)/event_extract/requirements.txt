@@ -1,0 +1,20 @@
+# 多源事件识别与要素抽取 依赖
+# 基础
+pandas>=2.0
+numpy>=1.24
+openpyxl>=3.1
+requests>=2.31
+
+# Web 服务（api_event.py / main.py）
+fastapi>=0.110
+uvicorn>=0.29
+pydantic>=2.0
+
+# LLM 调用（可选）：直接用 requests 调用 OpenAI 兼容接口，无需额外 SDK。
+# 若用 openai SDK，可 `pip install openai`。
+
+# LoRA 微调（可选，按需安装，不装不影响 Prompt Engineering 路线）
+# torch>=2.0
+# transformers>=4.40
+# peft>=0.10
+# datasets>=2.18

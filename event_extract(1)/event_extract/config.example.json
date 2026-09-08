@@ -1,0 +1,8 @@
+{
+  "llm": {
+    "provider": "qwen",
+    "api_key": "sk-在这里填你的API密钥",
+    "base_url": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+    "model": "qwen-plus"
+  }
+}

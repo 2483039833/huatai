@@ -1,0 +1,27 @@
+{
+  "selection_rule": "highest 2-fold macro F1, then accuracy",
+  "scopes": {
+    "industry": {
+      "records": 556,
+      "models": {
+        "character_nb": {
+          "accuracy_mean": 0.8416,
+          "macro_f1_mean": 0.5321
+        },
+        "idf_centroid": {
+          "accuracy_mean": 0.6961,
+          "macro_f1_mean": 0.4233
+        },
+        "keyword_rules": {
+          "accuracy_mean": 0.5521,
+          "macro_f1_mean": 0.3434
+        },
+        "voting_ensemble": {
+          "accuracy_mean": 0.7824,
+          "macro_f1_mean": 0.4883
+        }
+      },
+      "selected_model": "character_nb"
+    }
+  }
+}

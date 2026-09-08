@@ -1,0 +1,13 @@
+{
+  "device": "cpu",
+  "completed_epochs": 3,
+  "validation": {
+    "accuracy": 0.7516,
+    "macro_f1": 0.6564
+  },
+  "provided_test_diagnostic": {
+    "accuracy": 0.7801,
+    "macro_f1": 0.6546
+  },
+  "checkpoint": "D:\\huaitai\\event_radar\\models\\company_textcnn.pt"
+}

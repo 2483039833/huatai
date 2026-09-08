@@ -1,0 +1,38 @@
+{
+  "generated_at": "2026-07-27T04:51:35.466952Z",
+  "method": "rare character-shingle candidate retrieval + title/body containment similarity + recall-first threshold calibration (training precision floor 88%) + union-find clustering",
+  "threshold": 0.45,
+  "training": {
+    "records": 1499,
+    "positive_pairs": 952,
+    "candidate_pairs": 259087,
+    "candidate_recall": 1.0,
+    "pair_metrics_at_selected_threshold": {
+      "precision": 0.8824,
+      "recall": 0.9611,
+      "f1": 0.9201,
+      "true_positive": 915
+    }
+  },
+  "test": {
+    "records": 753,
+    "positive_pairs": 950,
+    "candidate_pairs": 84194,
+    "candidate_recall": 1.0,
+    "pair_metrics": {
+      "precision": 0.9737,
+      "recall": 0.8579,
+      "f1": 0.9121,
+      "true_positive": 815
+    },
+    "b_cubed": {
+      "precision": 0.9735,
+      "recall": 0.9853,
+      "f1": 0.9794
+    },
+    "predicted_clusters": 429,
+    "multi_article_clusters": 164,
+    "edge_file": "deduplication_edges_test.jsonl.gz",
+    "cluster_file": "deduplication_clusters_test.jsonl.gz"
+  }
+}

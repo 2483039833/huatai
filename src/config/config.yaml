@@ -1,0 +1,73 @@
+﻿# ==========================================
+# 全局配置文件
+# ==========================================
+
+data:
+  raw:
+    company_train: "news_with_tags_train.xlsx"
+    industry_train: "news_with_tags_train.xlsx"    # 同一文件，不同sheet
+    company_test: "news_with_tags_test.xlsx"
+    unlabeled_train: "news_without_tags_train.xlsx"
+    unlabeled_test: "news_without_tags_test.xlsx"
+    event_schema_company: "事件类型_标的.json"
+    event_schema_industry: "事件类型_行业.json"
+
+  sheets:
+    company_data: 0           # 公司事件数据 sheet index
+    industry_data: 1          # 行业事件数据 sheet index
+    company_dup: 2            # 公司重复/谣言匹配
+    industry_dup: 3           # 行业重复/谣言匹配
+
+embedding:
+  model_name: "BAAI/bge-large-zh-v1.5"
+  device: "cpu"               # cpu / cuda
+  batch_size: 64
+  max_seq_length: 512
+  cache_dir: "data/embeddings"
+  dimension: 1024   # bge-large-zh-v1.5 输出 1024 维
+
+clustering:
+  method: "graph"             # graph(推荐) / hdbscan / dbscan
+  hdbscan:
+    min_cluster_size: 2
+    min_samples: 1
+    metric: "euclidean"
+    cluster_selection_epsilon: 0.5
+  dbscan:
+    eps: 0.5
+    min_samples: 2
+    metric: "cosine"
+
+retrieval:
+  index_type: "flat"          # flat / ivf
+  top_k: 20
+  similarity_threshold: 0.94  # 相似度阈值（基线实验验证的最优值，见 BASELINE_REPORT）
+
+api:
+  host: "0.0.0.0"
+  port: 8000
+  debug: true
+
+streaming:
+  enabled: false              # Kafka 开关，初期关闭
+  bootstrap_servers: "localhost:9092"
+  input_topic: "raw-events"
+  output_topic: "clustered-events"
+
+logging:
+  level: "INFO"
+  file: "logs/app.log"
+alert:
+  P0:
+    min_impact: 0.80
+    min_credibility: 0.80
+  P1:
+    min_impact: 0.65
+    min_credibility: 0.70
+  P2:
+    min_impact: 0.52
+    min_credibility: 0.55
+  P3:
+    min_impact: 0.00
+    min_credibility: 0.00
+
