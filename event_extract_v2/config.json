@@ -1,0 +1,8 @@
+{
+  "llm": {
+    "provider": "deepseek",
+    "api_key": "sk-081799ee3a774586a515ca68735aeeb4",
+    "base_url": "https://api.deepseek.com/v1",
+    "model": "deepseek-chat"
+  }
+}
